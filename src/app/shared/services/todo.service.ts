@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Todo } from '../classes/todo';
 import { Observable } from 'rxjs';
+import { environment } from '../../../environments/environment';
 
 const requestOptions = { withCredentials: true };
 @Injectable({
@@ -9,14 +10,17 @@ const requestOptions = { withCredentials: true };
 })
 export class TodoService {
 
+  private url = `${environment.apiBaseUrl}/todo`;
+
   constructor(private http: HttpClient) { }
   save(item: string): Observable<Todo> {
-    return this.http.post<Todo>('https://sails-ws.herokuapp.com/todo', new Todo(item),
+    return this.http.post<Todo>(`${this.url}`, new Todo(item),
       requestOptions);
   }
 
   updateTodo(todo: Todo): Observable<string> {
-    const url = `https://sails-ws.herokuapp.com/todo/${todo.id}`;
+    const url = `${this.url}/${todo.id}`;
+
 
     return this.http.patch(url, todo, {
       withCredentials: true,
@@ -25,11 +29,11 @@ export class TodoService {
   }
 
   getAll(): Observable<Todo[]> {
-    return this.http.get<Todo[]>('https://sails-ws.herokuapp.com/todo', requestOptions);
+    return this.http.get<Todo[]>(`${this.url}`, requestOptions);
   }
 
   deleteTodo(todo: Todo): Observable<string> {
-    const url = `https://sails-ws.herokuapp.com/todo/${todo.id}`;
+    const url = `${this.url}/${todo.id}`;
 
     return this.http.delete(url, {
       withCredentials: true,
