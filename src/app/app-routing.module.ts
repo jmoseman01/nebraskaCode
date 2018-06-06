@@ -7,16 +7,17 @@ import { SignupComponent } from './signup/signup.component';
 import { TodoComponent } from './todo/todo.component';
 
 import { IsLoggedInGuard} from './shared/guards/is-logged-in.guard'
-
+import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
   {
-    path: '',
-    component: TodoComponent,
-    canActivate: [IsLoggedInGuard]
+      path: '',
+      component: TodoComponent,
+      canActivate: [IsLoggedInGuard]
   },
   { path: 'login', component: LoginComponent },
-  { path: 'signup', component: SignupComponent }
+  { path: 'signup', component: SignupComponent },
+  { path: '**', component: NotFoundComponent }
 ];
 
 @NgModule({

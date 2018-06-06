@@ -13,6 +13,7 @@ import { SignupComponent } from './signup/signup.component';
 import { TodoComponent } from './todo/todo.component';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faTrashAlt, faSquare, faCheckSquare } from '@fortawesome/free-regular-svg-icons';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 
 library.add(faTrashAlt, faCheckSquare, faSquare);
@@ -21,7 +22,8 @@ library.add(faTrashAlt, faCheckSquare, faSquare);
     AppComponent,
     LoginComponent,
     SignupComponent,
-    TodoComponent
+    TodoComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
