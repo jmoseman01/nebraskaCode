@@ -6,11 +6,14 @@ import { SignupComponent } from './signup/signup.component';
 
 import { TodoComponent } from './todo/todo.component';
 
+import { IsLoggedInGuard} from './shared/guards/is-logged-in.guard'
+
 
 const routes: Routes = [
   {
     path: '',
-    component: TodoComponent
+    component: TodoComponent,
+    canActivate: [IsLoggedInGuard]
   },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent }
